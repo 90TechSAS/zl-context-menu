@@ -24,7 +24,8 @@
           scope: {
             'callback': '&contextMenu',
             'disabled': '&contextMenuDisabled',
-            'closeCallback': '&contextMenuClose'
+            'closeCallback': '&contextMenuClose',
+            'target'    : '=contextMenuTarget'
           },
           link: function($scope, $element, $attrs) {
             var opened = false;
@@ -75,9 +76,9 @@
                   close(ContextMenuService.menuElement);
                 }
                 ContextMenuService.menuElement = angular.element(
-                  document.getElementById($attrs.target)
+                  document.getElementById($scope.target)
                 );
-                ContextMenuService.element = event.target;
+                ContextMenuService.element = $scope.target;
                 //console.log('set', ContextMenuService.element);
 
                 event.preventDefault();
